@@ -188,7 +188,8 @@ class EdrDataBridge(object):
 
     def all_available(self):
         try:
-            self.check_proxy() and self.check_openprocurement_api() and self.check_doc_service()
+            # Doc-service health check disabled due to https://jira.prozorro.org/browse/CS-1304
+            self.check_proxy() and self.check_openprocurement_api()  # and self.check_doc_service()
         except Exception as e:
             logger.info("Service is unavailable, message {}".format(e.message))
             return False
